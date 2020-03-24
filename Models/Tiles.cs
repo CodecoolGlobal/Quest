@@ -23,7 +23,14 @@ namespace Codecool.Quest.Models
                 {"player", new Tile(27, 0)},
                 {"skeleton", new Tile(29, 6)},
                 {"monster", new Tile(30, 6)},
-                {"sword", new Tile(0, 30) }
+                {"sword", new Tile(0, 30) },
+                {"gun", new Tile(10,31)  },
+                {"fence", new Tile(5,3) },
+                {"man", new Tile(25,0) },
+                {"door", new Tile(3,9) },
+                {"key", new Tile(16,23) },
+                {"key2", new Tile(17,23) },
+                {"headmask", new Tile(1,22) }
             };
 
         }

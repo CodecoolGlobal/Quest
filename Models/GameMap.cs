@@ -7,8 +7,22 @@ namespace Codecool.Quest.Models
     {
         public int Height { get; }
         public int Width { get; }
+
         private readonly Cell[,] _cells;
         public Player Player { get; set; }
+        public Skeleton Skeleton { get; set; }
+            
+        public  Sword Sword{ get; set; }
+
+        public Monster Monster { get; set; }
+
+        public Key Key { get; set; }
+
+        public Key2 Key2 { get; set; }
+
+        public Door Door { get; set; }
+
+        public Gun Gun { get; set; }
 
 
         public GameMap(int width, int height, CellType defaultCellType)

@@ -8,6 +8,5 @@
 
         public override string TileName { get; } = "monster";
 
-        public int MonsterId { get;  }
     }
 }

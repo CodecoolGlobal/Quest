@@ -46,7 +46,7 @@ namespace Codecool.Quest.Models
                             case 's':
                             {
                                 cell.CellType = CellType.Floor;
-                                new Skeleton(cell);
+                                map.Skeleton = new Skeleton(cell);
                                 break;
                             }
                             case '@':
@@ -59,12 +59,33 @@ namespace Codecool.Quest.Models
                             case 'm':
                             {
                                 cell.CellType = CellType.Floor; 
-                                new Monster(cell);
+                                map.Monster = new Monster(cell);
                                 break;
                             }
                             case 't':
                                 cell.CellType = CellType.Floor;
-                                new Sword(cell);
+                                map.Sword = new Sword(cell);
+                                break;
+
+                            case 'k':
+                                cell.CellType = CellType.Floor;
+                                map.Key = new Key(cell);
+                                break;
+
+                            
+                            case 'd':
+                                cell.CellType = CellType.Floor;
+                                map.Door = new Door(cell);
+                                break;
+
+                            case 'i':
+                                cell.CellType = CellType.Floor;
+                                map.Key2 = new Key2(cell);
+                                break;
+
+                            case 'g':
+                                cell.CellType = CellType.Floor;
+                                map.Gun = new Gun(cell);
                                 break;
                         }
                     }

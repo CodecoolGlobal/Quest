@@ -61,6 +61,7 @@ namespace Codecool.Quest
         protected override void Update(GameTime gameTime)
         {
             var keyboardState = Keyboard.GetState();
+            
 
             if (keyboardState.IsKeyDown(Keys.Escape))
             {
@@ -80,7 +81,7 @@ namespace Codecool.Quest
                 var previousLeftCell = _map.GetCell(_map.Player.X-1, _map.Player.Y);
 
                 if(previousLeftCell.IsCellFree())
-                    _map.Player.MovePlayer("left");
+                    _map.Player.MovePlayer(MoveDirection.Left);
                 
                 _lastMoveTime = gameTime.TotalGameTime;
             }
@@ -90,7 +91,7 @@ namespace Codecool.Quest
                 var nextRightCell = _map.GetCell(_map.Player.X + 1, _map.Player.Y);
 
                 if(nextRightCell.IsCellFree())
-                    _map.Player.MovePlayer("right");
+                    _map.Player.MovePlayer(MoveDirection.Right);
                 else
                 {
                     nextRightCell.DecreaseActorsLifeAndKillHimIfNecessary("skeleton");
@@ -103,7 +104,7 @@ namespace Codecool.Quest
                 var nextTopCell = _map.GetCell(_map.Player.X, _map.Player.Y-1);
 
                 if(nextTopCell.IsCellFree())
-                    _map.Player.MovePlayer("up");
+                    _map.Player.MovePlayer(MoveDirection.Up);
                 _lastMoveTime = gameTime.TotalGameTime;
             }
             else if (keyboardState.IsKeyDown(Keys.Down))
@@ -112,7 +113,7 @@ namespace Codecool.Quest
                 var previousBottomCell = _map.GetCell(_map.Player.X, _map.Player.Y+1);
 
                 if(previousBottomCell.IsCellFree())
-                 _map.Player.MovePlayer("down");
+                 _map.Player.MovePlayer(MoveDirection.Down);
                 _lastMoveTime = gameTime.TotalGameTime;
             }
 
