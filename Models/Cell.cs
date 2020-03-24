@@ -31,27 +31,16 @@ namespace Codecool.Quest.Models
 
         public bool IsCellFree()
         {
-            var emptyCell = this.Actor == null && this.CellType == CellType.Floor;
-            var collectableSword = this.Actor != null && this.Actor.TileName == "sword";
-
-            return emptyCell || collectableSword;
+            return this.Actor == null && this.CellType == CellType.Floor;
         }
 
-        public string WhoIsInCell()
+        public Actor GetActorInCellIfPresent()
         {
-            return this.Actor != null ? this.Actor.TileName : "NO ONE";
+            return this.Actor;
         }
 
-        public void DecreaseActorsLifeAndKillHimIfNecessary(string actorName)
-        {
-            if (WhoIsInCell() != actorName) return;
-            this.Actor.Health -= 1;
-            if (this.Actor.Health < 0)
-            {
-                this.Actor = null;
-            }
-        }
 
+        
 
     }
 }

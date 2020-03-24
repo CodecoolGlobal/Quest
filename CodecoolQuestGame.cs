@@ -77,43 +77,84 @@ namespace Codecool.Quest
 
             if (keyboardState.IsKeyDown(Keys.Left))
             {
-                // Move left                
-                var previousLeftCell = _map.GetCell(_map.Player.X-1, _map.Player.Y);
-
-                if(previousLeftCell.IsCellFree())
+                // Move left   
+                var neighborCell = _map.Player.Cell.GetNeighbor(-1, 0);
+                if (neighborCell.IsCellFree())
+                {
                     _map.Player.MovePlayer(MoveDirection.Left);
+                }
+                else
+                {
+                    var cellHasBeenFreed = _map.Player.CollectItemOrFight(neighborCell);
+                    if (cellHasBeenFreed)
+                    {
+                        _map.Player.MovePlayer(MoveDirection.Left);
+                    }
+                }
+                
                 
                 _lastMoveTime = gameTime.TotalGameTime;
             }
             else if (keyboardState.IsKeyDown(Keys.Right))
             {
                 // Move right
-                var nextRightCell = _map.GetCell(_map.Player.X + 1, _map.Player.Y);
-
-                if(nextRightCell.IsCellFree())
+                var neighborCell = _map.Player.Cell.GetNeighbor(1, 0);
+                if (neighborCell.IsCellFree())
+                {
                     _map.Player.MovePlayer(MoveDirection.Right);
+                }
                 else
                 {
-                    nextRightCell.DecreaseActorsLifeAndKillHimIfNecessary("skeleton");
+                    var cellHasBeenFreed = _map.Player.CollectItemOrFight(neighborCell);
+                    if (cellHasBeenFreed)
+                    {
+                        _map.Player.MovePlayer(MoveDirection.Right);
+                    }
+
                 }
+                
+
                 _lastMoveTime = gameTime.TotalGameTime;
+
             }
             else if (keyboardState.IsKeyDown(Keys.Up))
             {
-                // Move up
-                var nextTopCell = _map.GetCell(_map.Player.X, _map.Player.Y-1);
-
-                if(nextTopCell.IsCellFree())
+                //move up
+                var neighborCell = _map.Player.Cell.GetNeighbor(0, -1);
+                if (neighborCell.IsCellFree())
+                {
                     _map.Player.MovePlayer(MoveDirection.Up);
+                }
+                else
+                {
+                    var cellHasBeenFreed = _map.Player.CollectItemOrFight(neighborCell);
+                    if (cellHasBeenFreed)
+                    {
+                        _map.Player.MovePlayer(MoveDirection.Up);
+                    }
+
+                }
+                
                 _lastMoveTime = gameTime.TotalGameTime;
             }
             else if (keyboardState.IsKeyDown(Keys.Down))
             {
                 // Move down
-                var previousBottomCell = _map.GetCell(_map.Player.X, _map.Player.Y+1);
+                var neighborCell = _map.Player.Cell.GetNeighbor(0, 1);
+                if (neighborCell.IsCellFree())
+                {
+                    _map.Player.MovePlayer(MoveDirection.Down);
+                }
+                else
+                {
+                    var cellHasBeenFreed = _map.Player.CollectItemOrFight(neighborCell);
+                    if (cellHasBeenFreed)
+                    {
+                        _map.Player.MovePlayer(MoveDirection.Down);
+                    }
 
-                if(previousBottomCell.IsCellFree())
-                 _map.Player.MovePlayer(MoveDirection.Down);
+                }
+
                 _lastMoveTime = gameTime.TotalGameTime;
             }
 

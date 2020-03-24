@@ -29,39 +29,39 @@ namespace Codecool.Quest.Models
                         switch (line[x])
                         {
                             case ' ':
-                            {
+
                                 cell.CellType = CellType.Empty;
                                 break;
-                            }
+
                             case '#':
-                            {
+
                                 cell.CellType = CellType.Wall;
                                 break;
-                            }
+
                             case '.':
-                            {
+
                                 cell.CellType = CellType.Floor;
                                 break;
-                            }
+
                             case 's':
-                            {
+
                                 cell.CellType = CellType.Floor;
                                 map.Skeleton = new Skeleton(cell);
                                 break;
-                            }
+
                             case '@':
-                            {
+
                                 cell.CellType = CellType.Floor;
                                 map.Player = new Player(cell);
                                 break;
-                            }
+
 
                             case 'm':
-                            {
-                                cell.CellType = CellType.Floor; 
+
+                                cell.CellType = CellType.Floor;
                                 map.Monster = new Monster(cell);
                                 break;
-                            }
+
                             case 't':
                                 cell.CellType = CellType.Floor;
                                 map.Sword = new Sword(cell);
@@ -72,7 +72,7 @@ namespace Codecool.Quest.Models
                                 map.Key = new Key(cell);
                                 break;
 
-                            
+
                             case 'd':
                                 cell.CellType = CellType.Floor;
                                 map.Door = new Door(cell);
@@ -86,6 +86,16 @@ namespace Codecool.Quest.Models
                             case 'g':
                                 cell.CellType = CellType.Floor;
                                 map.Gun = new Gun(cell);
+                                break;
+
+                            case 'h':
+                                cell.CellType = CellType.Floor;
+                                map.Headmask = new Headmask(cell);
+                                break;
+
+                            case 'b':
+                                cell.CellType = CellType.Floor;
+                                map.Door2 = new Door2(cell);
                                 break;
                         }
                     }

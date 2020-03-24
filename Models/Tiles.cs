@@ -28,6 +28,7 @@ namespace Codecool.Quest.Models
                 {"fence", new Tile(5,3) },
                 {"man", new Tile(25,0) },
                 {"door", new Tile(3,9) },
+                {"door2", new Tile(10, 9) },
                 {"key", new Tile(16,23) },
                 {"key2", new Tile(17,23) },
                 {"headmask", new Tile(1,22) }

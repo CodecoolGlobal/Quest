@@ -10,6 +10,11 @@ namespace Codecool.Quest.Models
 
         public override string TileName { get; } = "key";
     }
+
+    public interface ICollectable
+    {
+        void CollectItem(Player player);
+    }
     public class Key2 : Actor
     {
         public Key2(Cell cell) : base(cell)
@@ -26,6 +31,15 @@ namespace Codecool.Quest.Models
         }
 
         public override string TileName { get; } = "door";
+    }
+
+    public class Door2 : Actor
+    {
+        public Door2(Cell cell) : base(cell)
+        {
+        }
+
+        public override string TileName { get; } = "door2";
     }
 
     public class Gun : Actor

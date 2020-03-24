@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Codecool.Quest.Models.Actors;
+﻿using Codecool.Quest.Models.Actors;
 
 namespace Codecool.Quest.Models
 {
@@ -19,6 +18,10 @@ namespace Codecool.Quest.Models
         public Key Key { get; set; }
 
         public Key2 Key2 { get; set; }
+
+        public Headmask Headmask { get; set; }
+
+        public Door2 Door2 { get; set; }    
 
         public Door Door { get; set; }
 
