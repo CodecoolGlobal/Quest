@@ -3,7 +3,7 @@
     public abstract class Actor : IDrawable
     {
         public Cell Cell { get; private set; }
-        public int Health { get; set; } = 4;
+        public int Health { get; set; } = 10;
 
         public int X => Cell.X;
 

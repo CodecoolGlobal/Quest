@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.ComponentModel.Design;
 
 namespace Codecool.Quest.Models.Actors
 {
@@ -47,15 +47,66 @@ namespace Codecool.Quest.Models.Actors
         public bool CollectItemOrFight(Cell cell)
         {
             var actorInCell = cell.GetActorInCellIfPresent();
-            if (actorInCell == null)
+            switch (actorInCell)
             {
-                return false;
+                case null:
+                    return false;
+                default:
+                    return HandleDifferentActors(actorInCell, cell);
             }
-
-            return HandleDifferentActors(actorInCell, cell);
         }
 
         private bool HandleDifferentActors(Actor actor, Cell cell)
+        {
+            switch (actor.TileName)
+            {
+
+                case "skeleton":
+                    return Fight(actor, cell);
+
+                case "monster":
+                    return Fight(actor, cell);
+
+                default:
+                    return CollectSimpleItem(actor, cell);
+            }
+            
+        }
+
+        private bool Fight(Actor actor, Cell cell)
+        {
+            var isFree = false;
+            if (HasSword && HasGun)
+            {
+                Health -= 1;
+                actor.Health -= 4;
+                isFree = CheckIfDead(actor, cell);
+            }
+
+            else if (HasSword)
+            {
+                Health -= 2;
+                actor.Health -= 2;
+                isFree  = CheckIfDead(actor, cell);
+
+
+            }
+            else if (HasGun)
+            {
+                Health -= 2;
+                actor.Health -= 2;
+                isFree = CheckIfDead(actor, cell);
+            }
+            else if (!HasHeadmask && !HasSword)
+            {
+                Health -= 3;
+                isFree = false;
+            }
+
+            return isFree;
+        }
+
+        private bool CollectSimpleItem(Actor actor, Cell cell)
         {
             switch (actor.TileName)
             {
@@ -75,12 +126,9 @@ namespace Codecool.Quest.Models.Actors
                     return true;
 
                 case "door":
-                    if (HasKey)
-                    {
-                        cell.Actor = null;
-                        return true;
-                    }
-                    return false;
+                    if (!HasKey) return false;
+                    cell.Actor = null;
+                    return true;
 
                 case "door2":
                     if (!HasKey2) return false;
@@ -100,7 +148,15 @@ namespace Codecool.Quest.Models.Actors
                 default:
                     return false;
             }
-            
+
+        }
+
+        private static bool CheckIfDead(Actor actor, Cell cell)
+        {
+            if (actor.Health > 0) return false;
+            cell.Actor = null;
+            return true;
+
         }
     }
 }
