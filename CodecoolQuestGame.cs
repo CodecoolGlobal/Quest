@@ -1,6 +1,5 @@
 ﻿using System;
 using Codecool.Quest.Models;
-using Codecool.Quest.Models.Actors;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -179,6 +178,7 @@ namespace Codecool.Quest
 
                     if (cell.Actor != null)
                     {
+
                         Tiles.DrawTile(SpriteBatch, cell.Actor, x, y);
                     }
                     else
@@ -188,11 +188,53 @@ namespace Codecool.Quest
                 }
             }
 
+            GUI.Text(new Vector2(900, 25), $"Player Health {_map.Player.Health}", Color.BlanchedAlmond);
+
+            GUI.Text(new Vector2(900,50), "items collected".ToUpperInvariant(),Color.White );
+
+            ShowCollectedItems(_map, 900, 75, 25);
+
 
 
             SpriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private static void ShowCollectedItems(GameMap map, int width, int height, int spaceBetweenWords)
+        {
+            var player = map.Player;
+
+            if (player.HasSword)
+            {
+                GUI.Text(new Vector2(width,height), "sword".ToUpperInvariant(),Color.Aqua );
+            }
+
+            if (player.HasKey)
+            {
+                GUI.Text(new Vector2(width,height + spaceBetweenWords), "Key".ToUpperInvariant(),Color.BlanchedAlmond );
+            }
+
+
+            if (player.HasHeadmask)
+            {
+                GUI.Text(new Vector2(width,height + 2*spaceBetweenWords), "headmask".ToUpperInvariant(),Color.Beige );
+
+            }
+
+            if (player.HasGun)
+            {
+                GUI.Text(new Vector2(width,height + 3*spaceBetweenWords), "gun".ToUpperInvariant(),Color.Coral );
+            }
+
+            if (player.HasKey2)
+            {
+                GUI.Text(new Vector2(width,height + 4*spaceBetweenWords), "2nd key".ToUpperInvariant(),Color.BlanchedAlmond );
+
+            }
+
+
+
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using Microsoft.Xna.Framework;
 
 namespace Codecool.Quest.Models.Actors
 {
@@ -19,6 +20,7 @@ namespace Codecool.Quest.Models.Actors
 
         public Player(Cell cell) : base(cell)
         {
+            Health = 25;
         }
 
         public void MovePlayer(MoveDirection move)
@@ -76,7 +78,12 @@ namespace Codecool.Quest.Models.Actors
         private bool Fight(Actor actor, Cell cell)
         {
             var isFree = false;
-            if (HasSword && HasGun)
+            if (HasGun && HasSword && HasHeadmask)
+            {
+                actor.Health -= 4;
+                isFree = CheckIfDead(actor, cell);
+            }
+            else if (HasSword && HasGun)
             {
                 Health -= 1;
                 actor.Health -= 4;
