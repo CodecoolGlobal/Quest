@@ -27,6 +27,9 @@ namespace Codecool.Quest.Models
 
         public Gun Gun { get; set; }
 
+        public Crown Crown { get; set; }
+
+
 
         public GameMap(int width, int height, CellType defaultCellType)
         {

@@ -1,4 +1,5 @@
-﻿using Codecool.Quest.Models.Actors;
+﻿using System.Text.Encodings.Web;
+using Codecool.Quest.Models.Actors;
 
 namespace Codecool.Quest.Models
 {

@@ -62,7 +62,7 @@ namespace Codecool.Quest
             var keyboardState = Keyboard.GetState();
             
 
-            if (keyboardState.IsKeyDown(Keys.Escape))
+            if (keyboardState.IsKeyDown(Keys.Escape) || _map.Player.Health < 0 || _map.Player.HasCrown)
             {
                 // Exit the game
                 Exit();
@@ -90,7 +90,7 @@ namespace Codecool.Quest
                         _map.Player.MovePlayer(MoveDirection.Left);
                     }
                 }
-                
+
                 
                 _lastMoveTime = gameTime.TotalGameTime;
             }
@@ -111,7 +111,6 @@ namespace Codecool.Quest
                     }
 
                 }
-                
 
                 _lastMoveTime = gameTime.TotalGameTime;
 
@@ -133,7 +132,6 @@ namespace Codecool.Quest
                     }
 
                 }
-                
                 _lastMoveTime = gameTime.TotalGameTime;
             }
             else if (keyboardState.IsKeyDown(Keys.Down))
@@ -153,7 +151,6 @@ namespace Codecool.Quest
                     }
 
                 }
-
                 _lastMoveTime = gameTime.TotalGameTime;
             }
 
@@ -232,6 +229,13 @@ namespace Codecool.Quest
                 GUI.Text(new Vector2(width,height + 4*spaceBetweenWords), "2nd key".ToUpperInvariant(),Color.BlanchedAlmond );
 
             }
+
+            if (player.HasCrown)
+            {
+                GUI.Text(new Vector2(width,height + 5*spaceBetweenWords), "crown".ToUpperInvariant(),Color.BlanchedAlmond );
+
+            }
+
 
 
 

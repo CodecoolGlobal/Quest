@@ -7,6 +7,7 @@ namespace Codecool.Quest.Models.Actors
     {
         public override string TileName { get; } = "player";
         public bool HasSword { get; set; }
+        public bool HasCrown { get; set; }  
 
         public bool HasKey { get; set; }
 
@@ -113,7 +114,7 @@ namespace Codecool.Quest.Models.Actors
             return isFree;
         }
 
-        private bool CollectSimpleItem(Actor actor, Cell cell)
+        private bool CollectSimpleItem(IDrawable actor, Cell cell)
         {
             switch (actor.TileName)
             {
@@ -149,6 +150,11 @@ namespace Codecool.Quest.Models.Actors
 
                 case "headmask":
                     HasHeadmask = true;
+                    cell.Actor = null;
+                    return true;
+
+                case "crown":
+                    HasCrown = true;
                     cell.Actor = null;
                     return true;
 

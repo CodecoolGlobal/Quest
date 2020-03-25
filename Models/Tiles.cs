@@ -31,7 +31,8 @@ namespace Codecool.Quest.Models
                 {"door2", new Tile(10, 9) },
                 {"key", new Tile(16,23) },
                 {"key2", new Tile(17,23) },
-                {"headmask", new Tile(1,22) }
+                {"headmask", new Tile(1,22) },
+                {"crown", new Tile(11,24) }
             };
 
         }

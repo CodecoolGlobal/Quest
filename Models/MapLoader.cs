@@ -97,6 +97,12 @@ namespace Codecool.Quest.Models
                                 cell.CellType = CellType.Floor;
                                 map.Door2 = new Door2(cell);
                                 break;
+
+                            case 'c' :
+                                cell.CellType = CellType.Floor;
+                                map.Crown = new Crown(cell);
+                                break;
+
                         }
                     }
                 }
